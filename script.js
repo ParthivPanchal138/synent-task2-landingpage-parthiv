@@ -35,4 +35,18 @@ document.addEventListener("DOMContentLoaded", () => {
       fill.style.width = targetWidth;
     });
 
-    
+    const numberElements = document.querySelectorAll(".mini-number");
+    numberElements.forEach((el) => {
+      const targetValue = parseInt(el.textContent, 10);
+      if (isNaN(targetValue)) return;
+
+      let startValue = 0;
+      const duration = 1500; // Match progress bar duration (1.5s)
+      const startTime = performance.now();
+
+      const updateCounter = (currentTime) => {
+        const elapsedTime = currentTime - startTime;
+        if (elapsedTime >= duration) {
+          el.textContent = targetValue; // Ensure it ends on exact number
+          return;
+    }
