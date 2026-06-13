@@ -62,3 +62,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  // Trigger when dashboard section is 20% visible on screen
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          startDashboardAnimation();
+          observer.unobserve(entry.target); // Optimize performance by unobserving
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  observer.observe(visualSection);
+});
