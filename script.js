@@ -50,3 +50,15 @@ document.addEventListener("DOMContentLoaded", () => {
           el.textContent = targetValue; // Ensure it ends on exact number
           return;
     }
+
+    const progress = elapsedTime / duration;
+        const easeOutProgress = progress * (2 - progress); 
+        
+        el.textContent = Math.floor(easeOutProgress * targetValue);
+        requestAnimationFrame(updateCounter);
+      };
+
+      requestAnimationFrame(updateCounter);
+    });
+  };
+
